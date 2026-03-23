@@ -104,8 +104,14 @@ impl BackendController for SecureShellConnection {
     }
 
     async fn is_alive(&self) -> bool {
-        let inner = self.inner.lock().await;
-        inner.child.is_some()
+        let mut inner = self.inner.lock().await;
+        if let Some(ref mut child) = inner.child {
+            match child.try_wait().ok() {
+                Some(Some(_)) => return false,
+                _ => return true,
+            }
+        }
+        false
     }
 }
 
