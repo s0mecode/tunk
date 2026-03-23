@@ -1,0 +1,18 @@
+[package]
+name = "tunk-cli"
+version = "0.1.0"
+edition = "2024"
+authors = ["s0mecode"]
+license = "Apache-2.0"
+repository = "https://github.com/s0mecode/tunk"
+description = "CLI tool for managing tunk tunnels"
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+clap = { version = "4.6.0", features = ["derive"] }
+protobuilder = "0.1.0"
+tunk-common = { path = "../tunk-common" }
+
+[[bin]]
+name = "tunk"
+path = "src/main.rs"

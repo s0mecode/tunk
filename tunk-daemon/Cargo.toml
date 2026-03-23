@@ -1,0 +1,22 @@
+[package]
+name = "tunk-daemon"
+version = "0.1.0"
+edition = "2024"
+authors = ["s0mecode"]
+license = "Apache-2.0"
+repository = "https://github.com/s0mecode/tunk"
+description = "Docker-like daemon for managing TCP tunnels"
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+ron = "0.12"
+dirs = "6"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+protobuilder = "0.1.0"
+tunk-common = { path = "../tunk-common" }
+tunk-backends = { path = "../tunk-backends" }
+
+[[bin]]
+name = "tunkd"
+path = "src/main.rs"

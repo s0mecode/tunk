@@ -1,0 +1,13 @@
+[package]
+name = "tunk-backends"
+version = "0.1.0"
+edition = "2024"
+authors = ["s0mecode"]
+license = "Apache-2.0"
+repository = "https://github.com/s0mecode/tunk"
+description = "Backend implementations for tunk"
+
+[dependencies]
+tunk-common = { path = "../tunk-common" }
+tokio = { version = "1", features = ["full"] }
+async-trait = "0.1"

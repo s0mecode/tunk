@@ -1,0 +1,10 @@
+// ~/.config/tunk/backends/secure_shell.ron
+
+SecureShell(
+  (ip: "1.2.3.4", port: 22), // IP and port of SSH server
+  (
+    username: "tunneluser", // username of the SSH server (previleged users aren't recommended for security reasons)
+    key_path: None, // path to keypair, for example, Some("/home/nilla/.ssh/my-ssh")
+    password: Some("1234"), // password if server uses password authentication?
+  ),
+)

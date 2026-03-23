@@ -1,0 +1,22 @@
+// Example with inline backend loading:
+(
+  backend: SecureShell(
+    (ip: "1.2.3.4", port: 22),
+    (
+      username: "root",
+      key_path: None,
+      password: Some("1234"),
+    ),
+  ),
+  direction: Reverse,
+  local: (ip: "127.0.0.1", port: 8080),
+  remote: (ip: "0.0.0.0", port: 80),
+)
+
+// Example with file-based backend (/home/nilla/.config/tunk/backends/my_backend.ron):
+(
+  backend: File("my_backend"),
+  direction: Reverse,
+  local: (ip: "127.0.0.1", port: 8080),
+  remote: (ip: "0.0.0.0", port: 80),
+)

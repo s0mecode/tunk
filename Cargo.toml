@@ -1,0 +1,8 @@
+[workspace]
+resolver = "3"
+members = [
+    "tunk-backends",
+    "tunk-cli",
+    "tunk-common",
+    "tunk-daemon",
+]

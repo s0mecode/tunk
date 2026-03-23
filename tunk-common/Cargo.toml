@@ -1,0 +1,15 @@
+[package]
+name = "tunk-common"
+version = "0.1.0"
+edition = "2024"
+authors = ["s0mecode"]
+license = "Apache-2.0"
+repository = "https://github.com/s0mecode/tunk"
+description = "Common library for tunk"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+thiserror = "2"
+tokio = { version = "1", features = ["full"] }
+dashmap = "6"
+async-trait = "0.1"
