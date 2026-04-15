@@ -14,7 +14,8 @@ For systemd-based systems:
 curl -fsSL https://cdn.nilla.run/i/tunk-sd | bash
 ```
 
-This installs both `tunk` (CLI) and `tunkd` (daemon) binaries.
+This installs both `tunk` (CLI) and `tunkd` (daemon) binaries to the `~/.local/bin`, and creates a systemd user service. 
+> Make sure `~/.local/bin` is in your `$PATH`.
 
 ## Manual Installation
 

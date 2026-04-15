@@ -20,13 +20,13 @@ Backends define how to connect to a tunnel provider. Currently only SSH is suppo
 
 Location: `~/.config/tunk/backends/my-ssh.ron`
 
-```ron
+```rust
 SecureShell(
-  (ip: "1.2.3.4", port: 22),           # Remote server
+  (ip: "1.2.3.4", port: 22), // Remote server
   (
-    username: "tunneluser",
-    key_path: Some("/home/user/.ssh/id_rsa"),
-    password: Some("secret"),           # or None for key-only auth
+    username: "tunneluser", // Remote SSH server username
+    key_path: Some("/home/user/.ssh/id_ed25519"), // Path to the SSH key, or None for password-only auth
+    password: Some("secret"), // or None for key-only auth
   ),
 )
 ```
@@ -45,17 +45,17 @@ Tunnels define port forwarding rules using a backend.
 
 Location: `~/.config/tunk/tunnels/web.ron`
 
-```ron
+```rust
 (
-  backend: File("my-ssh"),              # Reference to backend
-  direction: Reverse,                   # or Forward
-  local: (ip: "127.0.0.1", port: 8080), # Local bind address
-  remote: (ip: "0.0.0.0", port: 80),   # Remote bind address
-  mgr: (                               # Optional manager config
+  backend: File("my-ssh"), // Reference to backend
+  direction: Reverse, // or Forward
+  local: (ip: "127.0.0.1", port: 8080), // Local bind address
+  remote: (ip: "0.0.0.0", port: 80), // Remote bind address
+  mgr: Some(( // Optional manager config
     auto_start: Some(true),
     auto_restart: Some(true),
     auto_restart_interval: Some(1000),
-  ),
+  )),
 )
 ```
 
@@ -76,7 +76,7 @@ Location: `~/.config/tunk/tunnels/web.ron`
 
 Instead of referencing a file, you can inline the backend:
 
-```ron
+```rust
 (
   backend: SecureShell(
     (ip: "1.2.3.4", port: 22),
